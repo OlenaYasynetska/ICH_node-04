@@ -65,3 +65,4 @@ npm start
 - express - веб-фреймворк
 - cors - middleware для CORS
 - dotenv - загрузка переменных окружения
+

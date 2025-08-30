@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
+app.get('/:id', (req, res) => {
   res.json({
     message: 'Добро пожаловать в ICH Node.js приложение!',
     currentDate: getCurrentDate('long'),
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/date', (req, res) => {
+app.get('/:date', (req, res) => {
   const format = req.query.format || 'short';
   try {
     const date = getCurrentDate(format);
@@ -59,7 +59,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Внутренняя ошибка сервера' });
 });
 
-app.use('*', (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ error: 'Маршрут не найден' });
 });
 
